@@ -1,17 +1,11 @@
-var quizApp = {};
+var quiz = {}
 
-quizApp.getCategories = function(category) {
-	$.ajax({
-		url:'https://opentdb.com/api_category.php',
-		method:'GET',
-		dataType:'json'
-		data: {
-			format: 'json'
-		}
-	}).then(data){
-		console.log(data);
-	}
+quiz.test = function() {
+	console.log('hi');
 }
-quizApp.init = function () {
-	quizApp.getCategories();
-}; 
+quiz.init = function(){
+	quiz.test();
+}
+$(function(){
+	quiz.init();
+});
