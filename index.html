@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Qriosity API app</title>
+	<title>Qriosity</title>
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
-	<h1>testing gulp/ github</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente tempora, animi debitis quibusdam repellat ea. Quibusdam labore delectus laborum iure aliquam, quae harum praesentium omnis, perspiciatis exercitationem adipisci voluptatem temporibus!</p>
+	<main>
+		<section class="splash">
+			<h1>Qriosity</h1>
+			<form action="submit">
+				<input type="checkbox" class="players">
+				<input type="select" class="categories">
+				<input type="range" class="numberOfQuestions">
+				<input type="range" class="difficulty">
+				<button class="startQuiz">Start</button>
+			</form>
+		</section>
+		<section class="quiz">
+			<h2 class="question"></h2>
+			<div class="answerContainer">
+				<button class="answer"></button>
+				<button class="answer"></button>
+				<button class="answer"></button>
+				<button class="answer"></button>
+			</div>
+			<button class="submitAnswer"></button>
+		</section>
+		<section class="scoreBoard">
+			<h3 class="playerOne__score"></h3>
+			<h3 class="playerTwo__score"></h3>
+			<h2 class="scoreBoard__winner"></h2>
+			<button class="reset"></button>
+		</section>
+	</main>
 	<script src="public/scripts/main.js"></script>
 </body>
 </html>
