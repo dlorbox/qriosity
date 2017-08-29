@@ -1,28 +1,17 @@
 var quizApp = {};
 
-quizzApp.getQuizInfo = function(category) {
-	$.ajax{
-		url:'https://opentdb.com/api',
+quizApp.getCategories = function(category) {
+	$.ajax({
+		url:'https://opentdb.com/api_category.php',
 		method:'GET',
 		dataType:'json'
-		// data:{
-		// 	amount:
-		// 	category:
-		// 	difficulty:
-
-
-		// }
+		data: {
+			format: 'json'
+		}
+	}).then(data){
+		console.log(data);
 	}
 }
-
-// quizApp.userInput = function() {
-// 	$('form').on('submit', function(event)) {
-// 		event.preventDefault();
-// 		var 
-// 	}
-
-// };
-
 quizApp.init = function () {
-
-};
+	quizApp.getCategories();
+}; 
