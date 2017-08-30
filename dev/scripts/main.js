@@ -81,12 +81,21 @@ quiz.get = function(){
 //append the question above the answer buttons
 // store the input to player 1 and player 2
 quiz.quiz = function(results){
+	let playerOne = 0;
+	let playerTwo = 0;
+	let selection = "";
+	let correctAnswer = results.results[0].correct_answer;
 	let answers = [];
 	answers = results.results[0].incorrect_answers;
 	answers.push(results.results[0].correct_answer);
-	console.log(answers, "unshuffled answers");
+	// console.log(answers, "unshuffled answers");
 
-//function for shuffling answers within the answers array
+
+//function to get trivia question--------------------
+	$('.question').text(results.results[0].question);
+
+
+//function for shuffling answers within the answers array------------------
 	function shuffleAnswers(answers) {
 	    for (var i = answers.length - 1; i > 0; i--) {
 	        var j = Math.floor(Math.random() * (i + 1));
@@ -94,7 +103,7 @@ quiz.quiz = function(results){
 	        answers[i] = answers[j];
 	        answers[j] = temp;
 	    }
-	    console.log(answers, "shuffled answers");
+	    // console.log(answers, "shuffled answers");
 	    return answers;
 	}
 	shuffleAnswers(answers);
@@ -102,13 +111,51 @@ quiz.quiz = function(results){
 		$('.answer' + [i+1]).text(answers[i]);
 		$('.answer' + [i+1]).val(answers[i]);
 	}
+
+// function to get input---------------------------
+	turnPlayerOne();
+// player one ------------------------------
+	function turnPlayerOne(){
+		$('.playerIndicator').text("Player One");
+		$('.answer').on("click", function(){
+			selection = "";
+			selection = ($(this).val());
+		});
+		$('.submitAnswer').on('click', function(e){
+			e.preventDefault();
+			if (selection == correctAnswer){
+				playerOne = playerOne + 1;
+				selection = "";
+				turnPlayerTwo();
+			}else{
+				selection = "";
+				turnPlayerTwo();
+			}
+		});
+	}
+	function turnPlayerTwo(){
+		$('.playerIndicator').text("Player Two");
+		$('.answer').on("click", function(){
+			selection = "";
+			selection = ($(this).val());
+		});
+		$('.submitAnswer').on('click', function(e){
+			e.preventDefault();
+			if (selection == correctAnswer){
+				playerTwo = playerTwo + 1;
+				selection = "";
+			}else{
+				selection = "";
+			}
+		});
+	}
 };
 
 
 
 
 
-//Init and document ready
+//Init and document ready-----------------------
 quiz.init = function(){
 	quiz.category();
 	quiz.questionNumber();
