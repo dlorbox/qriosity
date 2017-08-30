@@ -19,18 +19,23 @@ quiz.category = function(category){
 quiz.questionNumber = function(){
 	$('.categories').on('change', function(){
 		var catId = $('.categories').val();
-		console.log(catId);
+		$.ajax({
+			url: `https://opentdb.com/api_count.php?category=${catId}`,
+			method:'GET',
+			dataType:'json'
+		}).then(function(res){
+			if ($('.difficulty').val() == 1){
+				console.log(res.category_question_count.total_easy_question_count);
+				
+			}else if($('.difficulty').val() == 2){
+				console.log(res.category_question_count.total_medium_question_count);
+			}else if($('.difficulty').val() == 3){
+				console.log(res.category_question_count.total_hard_question_count);
+			}
+		});
 	});
-	// $.ajax({
-	// 	url: `https://opentdb.com/api_count.php?category=${catId}`,
-	// 	method:'GET',
-	// 	dataType:'json'
-	// }).then(function(res){
-	// 	// let categoryId = catId.id;
-	// 	console.log(res);
-	// });
-
 };
+
 
 
 
