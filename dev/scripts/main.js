@@ -1,4 +1,5 @@
 var quiz = {}
+//Category ajax call
 quiz.category = function(category){
 	$.ajax({
 		url: `https://opentdb.com/api_category.php`,
@@ -6,16 +7,17 @@ quiz.category = function(category){
 		dataType: "json"
 	}).then(function(res){
 		let categoryNames = res.trivia_categories;
-		console.log(res);
-		for(var i = 0; i < categoryNames.length; i++){
-			console.log(categoryNames[i].name);
-		}
+		categoryNames.forEach(function(categoryName){
+			console.log(categoryName);
+		});
 	});
 }
 
-quiz.test = function() {
-	console.log('hi');
-}
+
+
+
+
+//Init and document ready
 quiz.init = function(){
 	quiz.category();
 }
