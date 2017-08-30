@@ -14,10 +14,6 @@ quiz.category = function(category){
 	});
 }
 
-quiz.injectCategory = function(cat){
-	console.log(cat);
-	
-}
 
 
 
