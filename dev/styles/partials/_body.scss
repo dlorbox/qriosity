@@ -10,9 +10,62 @@ body{
 h1{
 	color:white;
 	font-family: 'Abril Fatface', cursive;
+	text-align:center;
+}
+
+.splash{
+	border:2px solid $pale;
+	border-radius:5px;
+	padding:30px 0;
 }
 
 //input styles
+
+.players{
+	display:none;
+}
+
+.categories{
+	display:block;
+	margin:0 auto;
+}
+
+.difficulty{
+	display:block;
+	margin:15px auto;
+}
+.numberOfQuestions{
+	display:block;
+	margin:15px auto;
+}
+.difficulty, .numberOfQuestions{
+	-webkit-appearance: none;
+	background:$darkblue;
+	border-radius:15px;
+}
+
+.difficulty::-webkit-slider-thumb, .numberOfQuestions::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background-color: $pale;
+	border: 1px solid #bdc3c7;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.startQuiz{
+	display:block;
+	margin:0 auto;
+	border-radius:5px;
+	background-color:$pale;
+	border:1px solid $darkblue;
+	transition:all 0.3s;
+}
+
+.startQuiz:hover{
+	transform:scale(1.2);
+	box-shadow: 1px 1px $darkblue, 2px 2px $darkblue, 3px 3px $darkblue;
+}
 
 
 //quiz styles
