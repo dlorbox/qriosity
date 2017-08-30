@@ -8,12 +8,15 @@ quiz.category = function(category){
 	}).then(function(res){
 		let categoryNames = res.trivia_categories;
 		categoryNames.forEach(function(categoryName){
-			quiz.injectCategory(categoryName.name);
+			// quiz.injectCategory(categoryName);
+			$('.categories').append($('<option>').text(categoryName.name).val(categoryName.id));
 		});
 	});
 }
-quiz.injectCategory = function(name){
-	$('.categories').append($('<option>'));
+
+quiz.injectCategory = function(cat){
+	console.log(cat);
+	
 }
 
 
