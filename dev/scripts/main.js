@@ -13,7 +13,7 @@ quiz.category = function(category){
 	});
 }
 quiz.injectCategory = function(name){
-	console.log(name);
+	$('.categories').append($('<option>'));
 }
 
 
