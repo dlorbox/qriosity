@@ -84,13 +84,24 @@ quiz.quiz = function(results){
 	let answers = [];
 	answers = results.results[0].incorrect_answers;
 	answers.push(results.results[0].correct_answer);
-	// for(let i = 1; i < results.length; i++ ) {
-	// 	let answers = results[i].correct_answers;
+	console.log(answers, "unshuffled answers");
 
-	// }
-	// console.log(results.results[0].correct_answer);
-	console.log(answers);
-
+//function for shuffling answers within the answers array
+	function shuffleAnswers(answers) {
+	    for (var i = answers.length - 1; i > 0; i--) {
+	        var j = Math.floor(Math.random() * (i + 1));
+	        var temp = answers[i];
+	        answers[i] = answers[j];
+	        answers[j] = temp;
+	    }
+	    console.log(answers, "shuffled answers");
+	    return answers;
+	}
+	shuffleAnswers(answers);
+	for(var i = 0; i < 4; i++) {
+		$('.answer' + [i+1]).text(answers[i]);
+		$('.answer' + [i+1]).val(answers[i]);
+	}
 };
 
 
