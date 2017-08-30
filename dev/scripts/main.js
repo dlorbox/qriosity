@@ -8,6 +8,13 @@ quiz.category = function(category){
 		console.log(res);
 	});
 }
+// quiz.numberOfQuestions = function(){
+// 	$.ajax({
+// 		url: `https://opentdb.com/api_count.php?category=${selectedCategory}`,
+// 		method: "GET",
+// 		dataType: "json"
+// 	})
+// }
 quiz.test = function() {
 	console.log('hi');
 }
