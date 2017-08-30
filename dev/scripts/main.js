@@ -8,11 +8,13 @@ quiz.category = function(category){
 	}).then(function(res){
 		let categoryNames = res.trivia_categories;
 		categoryNames.forEach(function(categoryName){
-			console.log(categoryName);
+			quiz.injectCategory(categoryName.name);
 		});
 	});
 }
-
+quiz.injectCategory = function(name){
+	console.log(name);
+}
 
 
 
