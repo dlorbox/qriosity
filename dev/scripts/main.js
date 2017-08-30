@@ -12,8 +12,10 @@ quiz.category = function(category){
 		});
 	});
 }
+
 quiz.injectCategory = function(cat){
 	$('.categories').append($('<option>').text(cat.name).value(cat.id));
+
 }
 
 
