@@ -69,9 +69,29 @@ quiz.get = function(){
 			dataType: "json"
 		}).then(function(res){
 			console.log(res);
+			quiz.quiz(res);
 			});
+			$('.splash').hide();
+			$('.quiz').show();
 		});
 }
+//create a function to get correct and incorrect answers in an array
+//randomize the order of the array
+//append array items to the buttons on the quiz section of the HTML
+//append the question above the answer buttons
+// store the input to player 1 and player 2
+quiz.quiz = function(results){
+	let answers = [];
+	answers = results.results[0].incorrect_answers;
+	answers.push(results.results[0].correct_answer);
+	// for(let i = 1; i < results.length; i++ ) {
+	// 	let answers = results[i].correct_answers;
+
+	// }
+	// console.log(results.results[0].correct_answer);
+	console.log(answers);
+
+};
 
 
 
