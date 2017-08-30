@@ -92,7 +92,7 @@ quiz.quiz = function(results){
 
 
 //function to get trivia question--------------------
-	$('.question').text(results.results[0].question);
+	$('.question').html(results.results[0].question);
 
 
 //function for shuffling answers within the answers array------------------
