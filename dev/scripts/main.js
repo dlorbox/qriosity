@@ -5,16 +5,14 @@ quiz.category = function(category){
 		method: "GET",
 		dataType: "json"
 	}).then(function(res){
+		let categoryNames = res.trivia_categories;
 		console.log(res);
+		for(var i = 0; i < categoryNames.length; i++){
+			console.log(categoryNames[i].name);
+		}
 	});
 }
-// quiz.numberOfQuestions = function(){
-// 	$.ajax({
-// 		url: `https://opentdb.com/api_count.php?category=${selectedCategory}`,
-// 		method: "GET",
-// 		dataType: "json"
-// 	})
-// }
+
 quiz.test = function() {
 	console.log('hi');
 }
