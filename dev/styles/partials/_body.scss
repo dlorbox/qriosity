@@ -12,11 +12,18 @@ h1{
 	font-family: 'Abril Fatface', cursive;
 	text-align:center;
 }
+.wrapper{
+	max-width:1200px;
+	margin:0 auto;
+}
 
 .splash{
+	margin:30px 0;
 	border:2px solid $pale;
 	border-radius:5px;
 	padding:30px 0;
+	background:$lightblue;
+	height:90vh
 }
 
 //input styles
@@ -30,25 +37,21 @@ h1{
 	margin:0 auto;
 }
 
-.difficulty{
-	display:block;
-	margin:15px auto;
-}
-.numberOfQuestions{
-	display:block;
-	margin:15px auto;
-}
+
 .difficulty, .numberOfQuestions{
+	display:block;
+	margin:30px auto;
 	-webkit-appearance: none;
 	background:$darkblue;
 	border-radius:15px;
+	height:10px;
 }
 
 .difficulty::-webkit-slider-thumb, .numberOfQuestions::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	background-color: $pale;
 	border: 1px solid #bdc3c7;
-	width: 20px;
+	width: 8px;
 	height: 20px;
 	border-radius: 10px;
 	cursor: pointer;
@@ -76,6 +79,6 @@ h1{
 
 //results styles
 
-.scoreboard{
+.scoreBoard{
 	display:none;
 }
