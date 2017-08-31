@@ -10,6 +10,7 @@ quiz.category = function(category){
 		categoryNames.forEach(function(categoryName){
 			// quiz.injectCategory(categoryName);
 			$('.categories').append($('<option>').text(categoryName.name).val(categoryName.id));
+			$('.difficultyChoice').text("Easy");
 			// console.log(categoryName);
 		});
 	});
@@ -19,6 +20,8 @@ quiz.questionNumber = function(){
 	
 	$('.categories').on('change', function(){
 		var catId = $('.categories').val();
+		$('.difficulty').css("display", "block");
+		$('.difficultyChoice').css("display", "block");
 		$.ajax({
 			url: `https://opentdb.com/api_count.php?category=${catId}`,
 			method:'GET',
@@ -26,16 +29,19 @@ quiz.questionNumber = function(){
 		}).then(function(res){
 			console.log(res);
 			$('.difficulty').on('change', function(){
+				$('.numberOfQuestions').css("display", "block")
 				if ($('.difficulty').val() == 1){
 					// console.log(res.category_question_count.total_easy_question_count);
 					if (res.category_question_count.total_easy_question_count >50){
 						console.log('easy');
+						$('.difficultyChoice').text("Easy");
 						$('.numberOfQuestions').attr({"max" : 50});
 					} else{
 						$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
 					}
 				}else if($('.difficulty').val() == 2){
 					console.log('med');
+					$('.difficultyChoice').text("Medium");
 					// console.log(res.category_question_count.total_medium_question_count);
 					if (res.category_question_count.total_medium_question_count >50){
 						$('.numberOfQuestions').attr({"max" : 50});
@@ -44,6 +50,7 @@ quiz.questionNumber = function(){
 					}
 				}else if($('.difficulty').val() == 3){
 					console.log('hard');
+					$('.difficultyChoice').text("Hard");
 					console.log(res.category_question_count.total_hard_question_count);
 					if (res.category_question_count.total_hard_question_count >50){
 						$('.numberOfQuestions').attr({"max" : 50});

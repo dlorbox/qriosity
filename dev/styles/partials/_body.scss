@@ -45,6 +45,7 @@ h1{
 	background:$darkblue;
 	border-radius:15px;
 	height:10px;
+	display:none;
 }
 
 .difficulty::-webkit-slider-thumb, .numberOfQuestions::-webkit-slider-thumb {
@@ -55,6 +56,12 @@ h1{
 	height: 20px;
 	border-radius: 10px;
 	cursor: pointer;
+}
+.difficultyChoice{
+	display:block;
+	text-align:center;
+	color:white;
+	display:none;
 }
 .startQuiz{
 	display:block;
@@ -69,6 +76,7 @@ h1{
 	transform:scale(1.2);
 	box-shadow: 1px 1px $darkblue, 2px 2px $darkblue, 3px 3px $darkblue;
 }
+
 
 
 //quiz styles
