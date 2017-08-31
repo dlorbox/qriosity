@@ -88,9 +88,17 @@ quiz.quiz = function(results){
 	let correctAnswer = results.results[0].correct_answer;
 	let answers = [];
 
+	//variables for length of array to stop the quiz at end of questions
+
+	const length = results.results.length;
+
+	let quizNumber = 0;
+
+	console.log(length);
+
 	//Quiz responses---------------------------------
-	answers = results.results[0].incorrect_answers;
-	answers.push(results.results[0].correct_answer);
+	answers = results.results[quizNumber].incorrect_answers;
+	answers.push(results.results[quizNumber].correct_answer);
 
 	//function for shuffling answers within the answers array------------------
 	function shuffleAnswers(answers) {
@@ -108,8 +116,12 @@ quiz.quiz = function(results){
 		$('.answer' + [i+1]).val(answers[i]);
 	}
 
+
+
+
+
 	//function to put the trivia question on the page--------------------
-	$('.question').html(results.results[0].question);
+	$('.question').html(results.results[quizNumber].question);
 
 
 
@@ -146,11 +158,30 @@ quiz.quiz = function(results){
 			if (selection == correctAnswer){
 				playerTwo = playerTwo + 1;
 				selection = "";
+				nextQuestion();
 			}else{
 				selection = "";
-			}
+				nextQuestion();
+			} 
 		});
 	}
+	let nextQuestion = () => {
+		if (quizNumber == length - 1) {
+			$('.quiz').hide();
+			$('.scoreBoard').show();
+		} else {
+			quizNumber = quizNumber + 1;
+			answers = results.results[quizNumber].incorrect_answers;
+			answers.push(results.results[quizNumber].correct_answer);
+			shuffleAnswers(answers);
+			for(var i = 0; i < 4; i++) {
+				$('.answer' + [i+1]).text(answers[i]);
+				$('.answer' + [i+1]).val(answers[i]);
+			}
+			$('.question').html(results.results[quizNumber].question);
+			turnPlayerOne();
+		}
+	};
 };
 
 
