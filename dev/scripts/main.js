@@ -24,31 +24,40 @@ quiz.questionNumber = function(){
 			method:'GET',
 			dataType:'json'
 		}).then(function(res){
-			if ($('.difficulty').val() == 1){
-				console.log(res.category_question_count.total_easy_question_count);
-				if (res.category_question_count.total_easy_question_count >50){
-					$('.numberOfQuestions').attr({"max" : 50});
-				} else{
-					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
+			console.log(res);
+			$('.difficulty').on('change', function(){
+				if ($('.difficulty').val() == 1){
+					// console.log(res.category_question_count.total_easy_question_count);
+					if (res.category_question_count.total_easy_question_count >50){
+						console.log('easy');
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+						$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
+					}
+				}else if($('.difficulty').val() == 2){
+					console.log('med');
+					// console.log(res.category_question_count.total_medium_question_count);
+					if (res.category_question_count.total_medium_question_count >50){
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_medium_question_count});
+					}
+				}else if($('.difficulty').val() == 3){
+					console.log('hard');
+					console.log(res.category_question_count.total_hard_question_count);
+					if (res.category_question_count.total_hard_question_count >50){
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_hard_question_count});
+					}
 				}
-			}else if($('.difficulty').val() == 2){
-				console.log(res.category_question_count.total_medium_question_count);
-				if (res.category_question_count.total_medium_question_count >50){
-					$('.numberOfQuestions').attr({"max" : 50});
-				} else{
-				$('.numberOfQuestions').attr({"max" : res.category_question_count.total_medium_question_count});
-				}
-			}else if($('.difficulty').val() == 3){
-				console.log(res.category_question_count.total_hard_question_count);
-				if (res.category_question_count.total_hard_question_count >50){
-					$('.numberOfQuestions').attr({"max" : 50});
-				} else{
-				$('.numberOfQuestions').attr({"max" : res.category_question_count.total_hard_question_count});
-				}
-			}
+
+
+				
+			});
 		});
 	});
-	
+
 };
 // The API call to get the appropriate quiz----------------------------------------------
 quiz.get = function(){
@@ -65,17 +74,17 @@ quiz.get = function(){
 		}else if($('.difficulty').val() == 3){
 			difficulty = "hard";
 		}
-		console.log(`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}`);
 		$.ajax({
 			url: `https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}`,
 			method: "GET",
 			dataType: "json"
 		}).then(function(res){
-			console.log(res);
+			// console.log(res);
 			quiz.quiz(res);
 			});
 			$('.splash').hide();
 			$('.quiz').show();
+			
 		});
 }
 //create a function to get correct and incorrect answers in an array
@@ -96,7 +105,7 @@ quiz.quiz = function(results){
 
 	let quizNumber = 0;
 
-	console.log(length);
+	// console.log(length);
 
 	//Quiz responses---------------------------------
 	answers = results.results[quizNumber].incorrect_answers;
@@ -197,7 +206,6 @@ quiz.quiz = function(results){
 		}
 	};
 };
-
 
 
 
