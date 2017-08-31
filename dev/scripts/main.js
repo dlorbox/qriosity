@@ -79,12 +79,16 @@ quiz.get = function(){
 			method: "GET",
 			dataType: "json"
 		}).then(function(res){
-			// console.log(res);
+			console.log(res.results)
+			for(var i = 0; i < res.results.length; i++){
+				$('.correctAnswers').append(`<h4>${res.results[i].question}<h4>`);
+				$('.correctAnswers').append(`<h5>${res.results[i].correct_answer}<h5>`);
+			}
+			
 			quiz.quiz(res);
 			});
 			$('.splash').hide();
 			$('.quiz').show();
-			
 		});
 }
 //create a function to get correct and incorrect answers in an array
@@ -192,6 +196,8 @@ quiz.quiz = function(results){
 		if (quizNumber == length - 1) {
 			$('.quiz').hide();
 			$('.scoreBoard').show();
+			$('.playerOne__score').text(playerOne);
+			$('.playerTwo__score').text(playerTwo);
 		} else {
 			quizNumber = quizNumber + 1;
 			answers = results.results[quizNumber].incorrect_answers;
@@ -206,6 +212,7 @@ quiz.quiz = function(results){
 		}
 	};
 };
+
 
 
 
