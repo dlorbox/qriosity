@@ -16,6 +16,7 @@ quiz.category = function(category){
 }
 //Making the API Call to receive the quiz attributes-----------------------------------
 quiz.questionNumber = function(){
+	
 	$('.categories').on('change', function(){
 		var catId = $('.categories').val();
 		$.ajax({
@@ -47,6 +48,7 @@ quiz.questionNumber = function(){
 			}
 		});
 	});
+	
 };
 // The API call to get the appropriate quiz----------------------------------------------
 quiz.get = function(){
@@ -100,6 +102,7 @@ quiz.quiz = function(results){
 	answers = results.results[quizNumber].incorrect_answers;
 	answers.push(results.results[quizNumber].correct_answer);
 
+
 	//function for shuffling answers within the answers array------------------
 	function shuffleAnswers(answers) {
 	    for (var i = answers.length - 1; i > 0; i--) {
@@ -112,10 +115,10 @@ quiz.quiz = function(results){
 	}
 	shuffleAnswers(answers);
 	for(var i = 0; i < 4; i++) {
-		$('.answer' + [i+1]).text(answers[i]);
+		$('.answer' + [i+1]).html(answers[i]);
 		$('.answer' + [i+1]).val(answers[i]);
 	}
-
+	
 
 
 
@@ -129,12 +132,21 @@ quiz.quiz = function(results){
 	turnPlayerOne();
 	// player one ------------------------------
 	function turnPlayerOne(){
+		if (results.results[quizNumber].type == 'boolean'){
+			$('.answer3').hide();
+			$('.answer4').hide();
+		}else{
+			$('.answer3').show();
+			$('.answer4').show();
+		}
+		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player One");
 		$('.answer').on("click", function(){
 			selection = "";
 			selection = ($(this).val());
+			$('.submitAnswer').show();
 		});
-		$('.submitAnswer').on('click', function(e){
+		$('.submitAnswer').one('click', function(e){
 			e.preventDefault();
 			if (selection == correctAnswer){
 				playerOne = playerOne + 1;
@@ -148,12 +160,14 @@ quiz.quiz = function(results){
 	}
 	// player two ----------------------------
 	function turnPlayerTwo(){
+		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player Two");
 		$('.answer').on("click", function(){
 			selection = "";
 			selection = ($(this).val());
+			$('.submitAnswer').show();
 		});
-		$('.submitAnswer').on('click', function(e){
+		$('.submitAnswer').one('click', function(e){
 			e.preventDefault();
 			if (selection == correctAnswer){
 				playerTwo = playerTwo + 1;
@@ -175,7 +189,7 @@ quiz.quiz = function(results){
 			answers.push(results.results[quizNumber].correct_answer);
 			shuffleAnswers(answers);
 			for(var i = 0; i < 4; i++) {
-				$('.answer' + [i+1]).text(answers[i]);
+				$('.answer' + [i+1]).html(answers[i]);
 				$('.answer' + [i+1]).val(answers[i]);
 			}
 			$('.question').html(results.results[quizNumber].question);
