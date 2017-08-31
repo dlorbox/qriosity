@@ -1,5 +1,5 @@
 var quiz = {}
-//Category ajax call
+//Category ajax call-----------------------------------------
 quiz.category = function(category){
 	$.ajax({
 		url: `https://opentdb.com/api_category.php`,
@@ -14,7 +14,7 @@ quiz.category = function(category){
 		});
 	});
 }
-
+//Making the API Call to receive the quiz attributes-----------------------------------
 quiz.questionNumber = function(){
 	$('.categories').on('change', function(){
 		var catId = $('.categories').val();
@@ -48,6 +48,7 @@ quiz.questionNumber = function(){
 		});
 	});
 };
+// The API call to get the appropriate quiz----------------------------------------------
 quiz.get = function(){
 	$('.startQuiz').on('click', function(e){
 		e.preventDefault();
@@ -86,16 +87,12 @@ quiz.quiz = function(results){
 	let selection = "";
 	let correctAnswer = results.results[0].correct_answer;
 	let answers = [];
+
+	//Quiz responses---------------------------------
 	answers = results.results[0].incorrect_answers;
 	answers.push(results.results[0].correct_answer);
-	// console.log(answers, "unshuffled answers");
 
-
-//function to get trivia question--------------------
-	$('.question').html(results.results[0].question);
-
-
-//function for shuffling answers within the answers array------------------
+	//function for shuffling answers within the answers array------------------
 	function shuffleAnswers(answers) {
 	    for (var i = answers.length - 1; i > 0; i--) {
 	        var j = Math.floor(Math.random() * (i + 1));
@@ -103,7 +100,6 @@ quiz.quiz = function(results){
 	        answers[i] = answers[j];
 	        answers[j] = temp;
 	    }
-	    // console.log(answers, "shuffled answers");
 	    return answers;
 	}
 	shuffleAnswers(answers);
@@ -112,9 +108,14 @@ quiz.quiz = function(results){
 		$('.answer' + [i+1]).val(answers[i]);
 	}
 
-// function to get input---------------------------
+	//function to put the trivia question on the page--------------------
+	$('.question').html(results.results[0].question);
+
+
+
+	// function to get input---------------------------
 	turnPlayerOne();
-// player one ------------------------------
+	// player one ------------------------------
 	function turnPlayerOne(){
 		$('.playerIndicator').text("Player One");
 		$('.answer').on("click", function(){
@@ -133,6 +134,7 @@ quiz.quiz = function(results){
 			}
 		});
 	}
+	// player two ----------------------------
 	function turnPlayerTwo(){
 		$('.playerIndicator').text("Player Two");
 		$('.answer').on("click", function(){
