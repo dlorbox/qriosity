@@ -31,10 +31,10 @@ quiz.questionNumber = function(){
 			$('.difficulty').on('change', function(){
 				$('.numberOfQuestions').css("display", "block")
 				if ($('.difficulty').val() == 1){
+					$('.difficultyChoice').text("Easy");
 					// console.log(res.category_question_count.total_easy_question_count);
 					if (res.category_question_count.total_easy_question_count >50){
 						console.log('easy');
-						$('.difficultyChoice').text("Easy");
 						$('.numberOfQuestions').attr({"max" : 50});
 					} else{
 						$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
