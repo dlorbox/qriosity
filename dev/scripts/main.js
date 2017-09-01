@@ -55,6 +55,9 @@ quiz.questionNumber = function(){
 					}
 				}
 			});
+			$('.numberOfQuestions').on('change', function(){
+				$('.startQuiz').show();
+			});
 		});
 	});
 };
