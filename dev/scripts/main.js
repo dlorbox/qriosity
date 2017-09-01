@@ -31,7 +31,7 @@ quiz.questionNumber = function(){
 				$('.numberOfQuestions').css("display", "block")
 				$('.numberOfQuestionsChoice').show();
 				if ($('.difficulty').val() == 1){
-					// console.log(res.category_question_count.total_easy_question_count);
+					console.log("easy");
 					if (res.category_question_count.total_easy_question_count >50){
 						console.log('easy');
 						$('.numberOfQuestions').attr({"max" : 50});
@@ -40,7 +40,7 @@ quiz.questionNumber = function(){
 					}
 				}else if($('.difficulty').val() == 2){
 					console.log('med');
-					// console.log(res.category_question_count.total_medium_question_count);
+					console.log(res.category_question_count.total_medium_question_count);
 					if (res.category_question_count.total_medium_question_count >50){
 						$('.numberOfQuestions').attr({"max" : 50});
 					} else{
