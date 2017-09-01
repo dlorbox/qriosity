@@ -170,6 +170,7 @@ quiz.quiz = function(results){
 			e.preventDefault();
 			if (selection == correctAnswer){
 				playerOne = playerOne + 1;
+				console.log(playerOne);
 				selection = "";
 				turnPlayerTwo();
 			}else{
@@ -195,6 +196,7 @@ quiz.quiz = function(results){
 				nextQuestion();
 			}else{
 				selection = "";
+				console.log('FUCK')
 				nextQuestion();
 			} 
 		});
