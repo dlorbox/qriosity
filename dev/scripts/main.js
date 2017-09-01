@@ -26,7 +26,45 @@ quiz.questionNumber = function(){
 			method:'GET',
 			dataType:'json'
 		}).then(function(res){
+<<<<<<< HEAD
+			console.log(res);
+			$('.difficulty').on('change', function(){
+				$('.numberOfQuestions').css("display", "block")
+				$('.numberOfQuestionsChoice').show();
+				if ($('.difficulty').val() == 1){
+					console.log("easy");
+					if (res.category_question_count.total_easy_question_count >50){
+						console.log('easy');
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+						$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
+					}
+				}else if($('.difficulty').val() == 2){
+					console.log('med');
+					console.log(res.category_question_count.total_medium_question_count);
+					if (res.category_question_count.total_medium_question_count >50){
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_medium_question_count});
+					}
+				}else if($('.difficulty').val() == 3){
+					console.log('hard');
+					console.log(res.category_question_count.total_hard_question_count);
+					if (res.category_question_count.total_hard_question_count >50){
+						$('.numberOfQuestions').attr({"max" : 50});
+					} else{
+					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_hard_question_count});
+					}
+				}
+			});
+			$('.numberOfQuestions').on('mousemove', function(){
+				let numberOfQuestions = $('.numberOfQuestions').val();
+				$('.numberOfQuestionsChoice').text(numberOfQuestions);
+				$('.startQuiz').css("display", "block");
+			});
+=======
 			quiz.numberOfQuestionsToSelectorBar(res);
+>>>>>>> a2e6f14493985c689986a0d818f2a7f0264e310a
 		});
 	});
 };
