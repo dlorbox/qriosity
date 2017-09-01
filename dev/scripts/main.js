@@ -10,7 +10,6 @@ quiz.category = function(category){
 		categoryNames.forEach(function(categoryName){
 			// quiz.injectCategory(categoryName);
 			$('.categories').append($('<option>').text(categoryName.name).val(categoryName.id));
-			$('.difficultyChoice').text("Easy");
 			// console.log(categoryName);
 		});
 	});
@@ -19,9 +18,9 @@ quiz.category = function(category){
 quiz.questionNumber = function(){
 	
 	$('.categories').on('change', function(){
+		$('.categoryPlaceholder').remove();
+		$('.difficulty').css('display', 'inline-block');
 		var catId = $('.categories').val();
-		$('.difficulty').css("display", "block");
-		$('.difficultyChoice').css("display", "block");
 		$.ajax({
 			url: `https://opentdb.com/api_count.php?category=${catId}`,
 			method:'GET',
@@ -31,7 +30,6 @@ quiz.questionNumber = function(){
 			$('.difficulty').on('change', function(){
 				$('.numberOfQuestions').css("display", "block")
 				if ($('.difficulty').val() == 1){
-					$('.difficultyChoice').text("Easy");
 					// console.log(res.category_question_count.total_easy_question_count);
 					if (res.category_question_count.total_easy_question_count >50){
 						console.log('easy');
@@ -41,7 +39,6 @@ quiz.questionNumber = function(){
 					}
 				}else if($('.difficulty').val() == 2){
 					console.log('med');
-					$('.difficultyChoice').text("Medium");
 					// console.log(res.category_question_count.total_medium_question_count);
 					if (res.category_question_count.total_medium_question_count >50){
 						$('.numberOfQuestions').attr({"max" : 50});
@@ -50,7 +47,6 @@ quiz.questionNumber = function(){
 					}
 				}else if($('.difficulty').val() == 3){
 					console.log('hard');
-					$('.difficultyChoice').text("Hard");
 					console.log(res.category_question_count.total_hard_question_count);
 					if (res.category_question_count.total_hard_question_count >50){
 						$('.numberOfQuestions').attr({"max" : 50});
@@ -58,13 +54,9 @@ quiz.questionNumber = function(){
 					$('.numberOfQuestions').attr({"max" : res.category_question_count.total_hard_question_count});
 					}
 				}
-
-
-				
 			});
 		});
 	});
-
 };
 // The API call to get the appropriate quiz----------------------------------------------
 quiz.get = function(){
@@ -107,7 +99,6 @@ quiz.quiz = function(results){
 	let playerOne = 0;
 	let playerTwo = 0;
 	let selection = "";
-	let correctAnswer = results.results[0].correct_answer;
 	let answers = [];
 
 	//variables for length of array to stop the quiz at end of questions
@@ -168,6 +159,7 @@ quiz.quiz = function(results){
 		});
 		$('.submitAnswer').one('click', function(e){
 			e.preventDefault();
+			let correctAnswer = results.results[quizNumber].correct_answer;
 			if (selection == correctAnswer){
 				playerOne = playerOne + 1;
 				console.log(playerOne);
@@ -189,14 +181,17 @@ quiz.quiz = function(results){
 			$('.submitAnswer').show();
 		});
 		$('.submitAnswer').one('click', function(e){
+			let correctAnswer = results.results[quizNumber].correct_answer;
 			e.preventDefault();
+			console.log(correctAnswer)
+			console.log(selection)
 			if (selection == correctAnswer){
 				playerTwo = playerTwo + 1;
 				selection = "";
 				nextQuestion();
 			}else{
 				selection = "";
-				console.log('FUCK')
+				console.log('')
 				nextQuestion();
 			} 
 		});
