@@ -5,12 +5,17 @@
 body{
 	background: $blue;
 	font-family: 'Playfair Display', serif;
+	font-size: 62.5%;
 }
 
 h1{
 	color:white;
 	font-family: 'Abril Fatface', cursive;
 	text-align:center;
+	font-size: 2rem;
+}
+h2{
+	font-size: 2rem;
 }
 .wrapper{
 	max-width:1200px;
@@ -39,10 +44,13 @@ form{
 .categories{
 	display:block;
 	margin:0 auto;
+	font-size: 1rem;
 }
 .difficulty{
 	display: none;
 	margin:0 auto;
+	font-size: 1rem;
+	color: white;
 }
 
 .numberOfQuestions{
@@ -55,6 +63,7 @@ form{
 	display:none;
 }
 
+
 .numberOfQuestionsChoice{
 	width:50px;
 	height:50px;
@@ -62,6 +71,9 @@ form{
 	display:none;
 	margin:0 auto;
 }
+
+
+
 
 .numberOfQuestions::-webkit-slider-thumb {
 	-webkit-appearance: none;
@@ -79,6 +91,7 @@ form{
 	background-color:$pale;
 	border:1px solid $darkblue;
 	transition:all 0.3s;
+	font-size: 2rem;
 }
 
 .startQuiz:hover{
@@ -92,6 +105,49 @@ form{
 
 .quiz{
 	display:none;
+}
+.question{
+	text-align: center;
+	width: 80%;
+	margin:0 auto;
+	color: white;
+	margin-top: 100px;
+}
+.playerIndicator{
+	text-align: center;
+	color: white;
+	font-size: 1rem;
+}
+.answerContainer{
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
+.answer{
+	float: left;
+	width: calc(50% - 20px);
+	margin: 10px;
+	height: 100px;
+	background: $darkblue;
+	color: white;
+	border: 4px solid $lightblue;
+	font-size: 1rem;
+	transition: all 1s;
+	&:hover{
+		transform: scale(1.1);
+	}
+}
+.submitAnswer{
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 50px;
+	height: 100px;
+	background: $darkblue;
+	color: white;
+	border: 4px solid $lightblue;
+	width: 50%;	
+	display: block;
+	font-size: 1.5rem;
 }
 
 //results styles
