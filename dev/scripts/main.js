@@ -29,6 +29,7 @@ quiz.questionNumber = function(){
 			console.log(res);
 			$('.difficulty').on('change', function(){
 				$('.numberOfQuestions').css("display", "block")
+				$('.numberOfQuestionsChoice').show();
 				if ($('.difficulty').val() == 1){
 					// console.log(res.category_question_count.total_easy_question_count);
 					if (res.category_question_count.total_easy_question_count >50){
@@ -55,8 +56,10 @@ quiz.questionNumber = function(){
 					}
 				}
 			});
-			$('.numberOfQuestions').on('change', function(){
-				$('.startQuiz').show();
+			$('.numberOfQuestions').on('mousemove', function(){
+				let numberOfQuestions = $('.numberOfQuestions').val();
+				$('.numberOfQuestionsChoice').text(numberOfQuestions);
+				$('.startQuiz').css("display", "block");
 			});
 		});
 	});
@@ -68,6 +71,7 @@ quiz.get = function(){
 		let category = $('.categories').val();
 		let difficulty = "";
 		let numberOfQuestions = $('.numberOfQuestions').val();
+		console.log(numberOfQuestions)
 
 		if($('.difficulty').val() == 1){
 			difficulty = "easy";
