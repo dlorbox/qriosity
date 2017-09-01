@@ -13,9 +13,15 @@
 			<h1>Qriosity</h1>
 			<form action="">
 				<input type="checkbox" class="players">
-				<select class="categories"></select>
-				<input type="range" class="difficulty" list='tickmarks' step="1" min="1" max="3" value="1">
-				<div class="difficultyChoice"></div>
+				<select class="categories">
+					<option value="" class="categoryPlaceholder">Choose a category</option>
+				</select>
+				<label for="difficulty--easy" class="difficulty">Easy</label>
+				<input type="radio" class="difficulty" name='difficulty' value="1" id="difficulty--easy" selected>
+				<label for="difficulty--medium" class="difficulty">Medium</label>
+				<input type="radio" class="difficulty " name='difficulty'  value="2" id="difficulty--medium">
+				<label for="difficulty--hard" class="difficulty">Hard</label>
+				<input type="radio" class="difficulty" name='difficulty' value="3" id="difficulty--hard">
 				<input type="range" class="numberOfQuestions" value='1' min='1' max='50' step="1">
 				<div class="numberOfQuestionsChoice"></div>
 				<button class="startQuiz">Start</button>
