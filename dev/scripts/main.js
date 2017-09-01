@@ -198,7 +198,6 @@ quiz.quiz = function(results){
 	}
 	// player two ----------------------------
 	function turnPlayerTwo(){
-		console.log('switching players')
 		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player Two");
 		$('.answer').on("click", function(){
@@ -209,8 +208,7 @@ quiz.quiz = function(results){
 		$('.submitAnswer').one('click', function(e){
 			let correctAnswer = results.results[quizNumber].correct_answer;
 			e.preventDefault();
-			console.log(correctAnswer)
-			console.log(selection)
+			// $('.answer').css('transform', 'rotate(36000000000deg)');
 			if (selection == correctAnswer){
 				playerTwo = playerTwo + 1;
 				selection = "";
