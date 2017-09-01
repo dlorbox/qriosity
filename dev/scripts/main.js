@@ -14,9 +14,9 @@ quiz.category = function(category){
 		});
 	});
 }
+
 //Making the API Call to receive the quiz attributes-----------------------------------
 quiz.questionNumber = function(){
-	
 	$('.categories').on('change', function(){
 		$('.categoryPlaceholder').remove();
 		$('.difficulty').css('display', 'inline-block');
@@ -26,6 +26,7 @@ quiz.questionNumber = function(){
 			method:'GET',
 			dataType:'json'
 		}).then(function(res){
+<<<<<<< HEAD
 			console.log(res);
 			$('.difficulty').on('change', function(){
 				$('.numberOfQuestions').css("display", "block")
@@ -61,9 +62,63 @@ quiz.questionNumber = function(){
 				$('.numberOfQuestionsChoice').text(numberOfQuestions);
 				$('.startQuiz').css("display", "block");
 			});
+=======
+			quiz.numberOfQuestionsToSelectorBar(res);
+>>>>>>> a2e6f14493985c689986a0d818f2a7f0264e310a
 		});
 	});
 };
+quiz.reset = function(){
+	quiz.questionNumber();
+	$('.numberOfQuestionsChoice').hide();
+	$('.numberOfQuestions').hide();
+	$('.startQuiz').hide();
+}
+//Putting the number of questions from the category onto the question select bar
+quiz.numberOfQuestionsToSelectorBar = function(res) {
+	$('.difficulty').on('change', function(){
+		console.log(res);
+		$('.numberOfQuestions').css("display", "block")
+		$('.numberOfQuestionsChoice').show();
+		$('.categories').on('click', function(){
+			quiz.reset();
+		});
+
+		if ($('input[name="difficulty"]:checked').val() == 1){
+			console.log(res.category_question_count.total_easy_question_count);
+			console.log('easy');
+			if (res.category_question_count.total_easy_question_count >50){
+				$('.numberOfQuestions').attr({"max" : 50});
+			} else{
+				$('.numberOfQuestions').attr({"max" : res.category_question_count.total_easy_question_count});
+			}
+		}else if($('input[name="difficulty"]:checked').val() == 2){
+			console.log('med');
+			console.log(res.category_question_count.total_medium_question_count);
+			if (res.category_question_count.total_medium_question_count >50){
+				$('.numberOfQuestions').attr({"max" : 50});
+			} else{
+			$('.numberOfQuestions').attr({"max" : res.category_question_count.total_medium_question_count});
+			}
+		}else if($('input[name="difficulty"]:checked').val() == 3){
+			console.log('hard');
+			console.log(res.category_question_count.total_hard_question_count);
+			if (res.category_question_count.total_hard_question_count >50){
+				$('.numberOfQuestions').attr({"max" : 50});
+			} else{
+			$('.numberOfQuestions').attr({"max" : res.category_question_count.total_hard_question_count});
+			}
+		}
+	});
+}
+//Change number of questions box value
+quiz.numberOfQuestionsSelection = function() {$('.numberOfQuestions').on('mousemove', function(){
+		let numberOfQuestions = $('.numberOfQuestions').val();
+		$('.numberOfQuestionsChoice').text(numberOfQuestions);
+		$('.startQuiz').css("display", "block");
+	});
+}
+
 // The API call to get the appropriate quiz----------------------------------------------
 quiz.get = function(){
 	$('.startQuiz').on('click', function(e){
@@ -102,6 +157,7 @@ quiz.get = function(){
 //append array items to the buttons on the quiz section of the HTML
 //append the question above the answer buttons
 // store the input to player 1 and player 2
+
 quiz.quiz = function(results){
 	let playerOne = 0;
 	let playerTwo = 0;
@@ -180,6 +236,7 @@ quiz.quiz = function(results){
 	}
 	// player two ----------------------------
 	function turnPlayerTwo(){
+		console.log('switching players')
 		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player Two");
 		$('.answer').on("click", function(){
@@ -232,6 +289,7 @@ quiz.quiz = function(results){
 quiz.init = function(){
 	quiz.category();
 	quiz.questionNumber();
+	quiz.numberOfQuestionsSelection();
 	quiz.get();
 }
 $(function(){
