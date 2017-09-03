@@ -77,7 +77,10 @@ quiz.numberOfQuestionsToSelectorBar = function(res) {
 quiz.numberOfQuestionsSelection = function() {$('.numberOfQuestions').on('mousemove', function(){
 		let numberOfQuestions = $('.numberOfQuestions').val();
 		$('.numberOfQuestionsChoice').text(numberOfQuestions);
-		$('.startQuiz').css("display", "block");
+	});
+}
+quiz.StartQuizOnSlide= function() {$('.numberOfQuestions').on('click', function(){
+		$('.startQuiz').show();		
 	});
 }
 
@@ -250,6 +253,7 @@ quiz.init = function(){
 	quiz.category();
 	quiz.questionNumber();
 	quiz.numberOfQuestionsSelection();
+	quiz.StartQuizOnSlide();
 	quiz.get();
 }
 $(function(){
