@@ -236,6 +236,9 @@ quiz.quiz = function(results){
 			}else{
 				$('.scoreBoard__winner').text(`Tie game!`)
 			}
+			$('.reset').on("click", function(){
+    			location.reload(true);
+			});
 		}else{
 			quizNumber = quizNumber + 1;
 			answers = results.results[quizNumber].incorrect_answers;
