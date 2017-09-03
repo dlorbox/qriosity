@@ -224,9 +224,16 @@ quiz.quiz = function(results){
 		if (quizNumber == length - 1) {
 			$('.quiz').hide();
 			$('.scoreBoard').show();
-			$('.playerOne__score').text(playerOne);
-			$('.playerTwo__score').text(playerTwo);
-		} else {
+			$('.playerOne__score').text(`Player One: ${playerOne}`);
+			$('.playerTwo__score').text(`Player Two: ${playerTwo}`);
+			if(playerOne > playerTwo){
+				$('.scoreBoard__winner').text(`Player One Wins!`)
+			}else if(playerOne < playerTwo){
+				$('.scoreBoard__winner').text(`Player Two Wins!`)
+			}else{
+				$('.scoreBoard__winner').text(`Tie game!`)
+			}
+		}else{
 			quizNumber = quizNumber + 1;
 			answers = results.results[quizNumber].incorrect_answers;
 			answers.push(results.results[quizNumber].correct_answer);
