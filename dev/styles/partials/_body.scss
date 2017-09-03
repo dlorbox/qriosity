@@ -181,3 +181,19 @@ form{
 .scoreBoard{
 	display:none;
 }
+.playerOne__score, .playerTwo__score, .scoreBoard__winner{
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+	font-size: 2rem;
+}
+.reset{
+	font-size: 2rem;
+	margin: 0 auto;
+	margin-top: 50px;
+	display: block;
+}
+.correctAnswers{
+	font-size: 1.5rem;
+	text-align: center;
+}
