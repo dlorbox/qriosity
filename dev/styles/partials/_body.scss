@@ -84,7 +84,7 @@ form{
 	border-radius: 10px;
 	cursor: pointer;
 }
-.startQuiz{
+.startQuiz, .reset{
 	display:none;
 	margin:0 auto;
 	border-radius:5px;
@@ -94,7 +94,7 @@ form{
 	font-size: 2rem;
 }
 
-.startQuiz:hover{
+.startQuiz:hover, .reset:hover{
 	transform:scale(1.2);
 	box-shadow: 1px 1px $darkblue, 2px 2px $darkblue, 3px 3px $darkblue;
 }
