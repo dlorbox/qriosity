@@ -180,8 +180,22 @@ quiz.quiz = function(results){
 		}
 		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player One");
+		$("body").keydown(function(event){ 
+		     	if(event.which == 81){
+		     		selection = $('.answer1').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 87){
+		     		selection = $('.answer2').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 69){
+		     		selection = $('.answer3').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 82){
+		     		selection = $('.answer4').val();
+		     		$('.submitAnswer').show();
+		     	}
+		    });
 		$('.answer').on("click", function(){
-			selection = "";
 			selection = ($(this).val());
 			$('.submitAnswer').show();
 		});
@@ -203,8 +217,23 @@ quiz.quiz = function(results){
 	function turnPlayerTwo(){
 		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player Two");
+		$("body").keydown(function(event){ 
+				$('.submitAnswer').show();
+		     	if(event.which == 81){
+		     		selection = $('.answer1').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 87){
+		     		selection = $('.answer2').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 69){
+		     		selection = $('.answer3').val();
+		     		$('.submitAnswer').show();
+		     	}else if (event.which == 82){
+		     		selection = $('.answer4').val();
+		     		$('.submitAnswer').show();
+		     	}
+		    });
 		$('.answer').on("click", function(){
-			selection = "";
 			selection = ($(this).val());
 			$('.submitAnswer').show();
 		});
