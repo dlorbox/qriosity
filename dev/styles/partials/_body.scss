@@ -1,7 +1,13 @@
 //global styles
 // font-family: 'Abril Fatface', cursive;
 // font-family: 'Playfair Display', serif;
-
+// *{
+// 	transition: all 5s;
+// }
+// *:hover{
+// 	padding-left: 50px;
+// 	transform: scale(1) rotate(360deg) ;
+// }
 body{
 	background: $blue;
 	font-family: 'Playfair Display', serif;
