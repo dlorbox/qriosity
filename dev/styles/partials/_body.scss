@@ -19,6 +19,7 @@ h1{
 	font-family: 'Abril Fatface', cursive;
 	text-align:center;
 	font-size: 2rem;
+	margin-top:0px;
 }
 h2{
 	font-size: 2rem;
@@ -37,11 +38,21 @@ h2{
 	height:90vh
 }
 
+.splashContent{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
 //input styles
 
 form{
 	margin:0 auto;
 	text-align:center;
+	input.difficulty{
+		margin-right:30px;
+		margin-left:10px;
+	}
 }
 
 .players{
@@ -62,7 +73,7 @@ form{
 
 .numberOfQuestions{
 	display:block;
-	margin:30px auto;
+	margin:0px auto 30px;
 	-webkit-appearance: none;
 	background:$darkblue;
 	border-radius:15px;
@@ -90,13 +101,25 @@ form{
 	border-radius: 10px;
 	cursor: pointer;
 }
+.numberOfQuestionsDisplay {
+	display:none;
+	> div {
+		display:inline-block;
+	}
+	label{
+		display:inline;
+		margin-right: 20px;
+		color:white;
+		font-size: 1rem;
+	}
+}
 .startQuiz, .reset{
 	display:none;
 	margin:0 auto;
 	border-radius:5px;
 	background-color:$pale;
 	border:1px solid $darkblue;
-	transition:all 0.3s;
+	transition:transform 0.3s, box-shadow 0.3s;
 	font-size: 2rem;
 }
 
@@ -116,16 +139,17 @@ form{
 	width: 80%;
 	margin:0 auto;
 	color: white;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 .playerIndicator{
 	text-align: center;
-	color: white;
-	font-size: 1rem;
+	color: $lightblue;
+	font-size: 1.3rem;
 	border:2px solid $darkblue;
-	background-color: $lightblue;
+	background-color: $pale;
 	margin:25px auto;
-	width:30%;
+	padding:5px 0;
+	width:20%;
 	border-radius:5px;
 }
 .answerContainer{
@@ -140,16 +164,37 @@ form{
 	height: 100px;
 	background: $darkblue;
 	color: white;
-	border: 4px solid $lightblue;
+	border: 4px solid $blue;
 	font-size: 1rem;
 	transition: all 0.5s;
 	border-radius:5px;
+	position:relative;
 	&:hover{
 		transform: scale(1.1);
 	}
 	&:active, &:focus{
 		outline:none;
 	}
+}
+
+.answer1:before, .answer2:before, .answer3:before, .answer4:before{
+	content:"q";
+	padding:5px;
+	position:absolute;
+	top:5px;
+	left:5px;
+	border-radius:5px;
+	margin:0;
+	border:2px solid $pale;
+}
+.answer2:before{
+	content:"w";
+}
+.answer3:before{
+	content:"e";
+}
+.answer4:before{
+	content:"r";
 }
 .submitAnswer{
 	text-align: center;
@@ -171,7 +216,6 @@ form{
 	50%{transform:rotate(-2deg);}
 	75%{transform:rotate(0deg);transform:scale(1.05);}
 
-
 }
 
 .submitAnswer:hover{
@@ -191,6 +235,7 @@ form{
 	display: block;
 	margin: 0 auto;
 	font-size: 2rem;
+	color:white;
 }
 .reset{
 	font-size: 2rem;
@@ -198,9 +243,12 @@ form{
 	margin-top: 50px;
 	display: block;
 }
-.correctAnswers{
+.correctAnswers div{
+	margin:20px auto;
 	font-size: 1.5rem;
 	text-align: center;
 	color:white;
-	border: 1px solid red;
+	border-radius:5px;
+	background-color:$lightblue;
+	border: 2px solid $darkblue;
 }

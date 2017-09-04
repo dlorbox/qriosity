@@ -19,7 +19,7 @@ quiz.category = function(category){
 quiz.questionNumber = function(){
 	$('.categories').on('change', function(){
 		$('.categoryPlaceholder').remove();
-		$('.difficulty').css('display', 'inline-block');
+		$('.difficulty').fadeIn("slow");
 		var catId = $('.categories').val();
 		$.ajax({
 			url: `https://opentdb.com/api_count.php?category=${catId}`,
@@ -40,8 +40,11 @@ quiz.reset = function(){
 quiz.numberOfQuestionsToSelectorBar = function(res) {
 	$('.difficulty').on('change', function(){
 		console.log(res);
-		$('.numberOfQuestions').css("display", "block")
-		$('.numberOfQuestionsChoice').show();
+		$('.numberOfQuestions').fadeIn("slow");
+		$('.numberOfQuestions').css("display", "block");
+		$('.numberOfQuestionsDisplay').fadeIn("slow");
+		$('.numberOfQuestionsChoice').fadeIn("slow");
+		$('.startQuiz').fadeIn("slow");		
 		$('.categories').on('click', function(){
 			quiz.reset();
 		});
@@ -80,7 +83,6 @@ quiz.numberOfQuestionsSelection = function() {$('.numberOfQuestions').on('mousem
 	});
 }
 quiz.StartQuizOnSlide= function() {$('.numberOfQuestions').on('click', function(){
-		$('.startQuiz').show();		
 	});
 }
 
@@ -107,14 +109,14 @@ quiz.get = function(){
 		}).then(function(res){
 			console.log(res.results)
 			for(var i = 0; i < res.results.length; i++){
-				$('.correctAnswers').append(`<h4>${res.results[i].question}<h4>`);
-				$('.correctAnswers').append(`<h5>${res.results[i].correct_answer}<h5>`);
+				$('.correctAnswers').append(`<div><h4>${res.results[i].question}<h4><h5>${res.results[i].correct_answer}<h5></div>`);
+				// $('.correctAnswers').append(`<h5>${res.results[i].correct_answer}<h5>`);
 			}
 			
 			quiz.quiz(res);
 			});
-			$('.splash').hide();
-			$('.quiz').show();
+			$('.splashContent').hide();
+			$('.quiz').fadeIn("slow");
 		});
 }
 //create a function to get correct and incorrect answers in an array
@@ -255,6 +257,7 @@ quiz.quiz = function(results){
 	let nextQuestion = () => {
 		if (quizNumber == length - 1) {
 			$('.quiz').hide();
+			$('.splash').fadeOut("slow");
 			$('.scoreBoard').show();
 			$('.playerOne__score').text(`Player One: ${playerOne}`);
 			$('.playerTwo__score').text(`Player Two: ${playerTwo}`);
