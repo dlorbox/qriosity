@@ -218,7 +218,6 @@ quiz.quiz = function(results){
 		$('.submitAnswer').hide();
 		$('.playerIndicator').text("Player Two");
 		$("body").keydown(function(event){ 
-				$('.submitAnswer').show();
 		     	if(event.which == 81){
 		     		selection = $('.answer1').val();
 		     		$('.submitAnswer').show();
