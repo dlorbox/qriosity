@@ -10,33 +10,38 @@
 <body>
 	<main class="wrapper">
 		<section class="splash">
-			<h1>Qriosity</h1>
-			<form action="">
-				<input type="checkbox" class="players">
-				<select class="categories">
-					<option value="" class="categoryPlaceholder">Choose a category</option>
-				</select>
-				<label for="difficulty--easy" class="difficulty">Easy</label>
-				<input type="radio" class="difficulty" name='difficulty' value="1" id="difficulty--easy" selected>
-				<label for="difficulty--medium" class="difficulty">Medium</label>
-				<input type="radio" class="difficulty " name='difficulty'  value="2" id="difficulty--medium">
-				<label for="difficulty--hard" class="difficulty">Hard</label>
-				<input type="radio" class="difficulty" name='difficulty' value="3" id="difficulty--hard">
-				<input type="range" class="numberOfQuestions" value='1' min='1' max='50' step="1">
-				<div class="numberOfQuestionsChoice">1</div>
-				<button class="startQuiz">Start</button>
-			</form>
-		</section>
-		<section class="quiz">
-			<h2 class="question"></h2>
-			<h3 class="playerIndicator"></h3>
-			<div class="answerContainer clearfix">
-				<button class="answer answer1"></button>
-				<button class="answer answer2"></button>
-				<button class="answer answer3"></button>
-				<button class="answer answer4"></button>
+			<div class="splashContent">
+				<h1>Qriosity</h1>
+				<form action="">
+					<input type="checkbox" class="players">
+					<select class="categories">
+						<option value="" class="categoryPlaceholder">Choose a category</option>
+					</select>
+					<label for="difficulty--easy" class="difficulty">Easy</label>
+					<input type="radio" class="difficulty" name='difficulty' value="1" id="difficulty--easy" selected>
+					<label for="difficulty--medium" class="difficulty">Medium</label>
+					<input type="radio" class="difficulty " name='difficulty'  value="2" id="difficulty--medium">
+					<label for="difficulty--hard" class="difficulty">Hard</label>
+					<input type="radio" class="difficulty" name='difficulty' value="3" id="difficulty--hard">
+					<div class="numberOfQuestionsDisplay">
+						<label for="numberOfQuestions">Number Of Questions :</label>
+						<div class="numberOfQuestionsChoice">1</div>
+					</div>
+					<input type="range" class="numberOfQuestions" id="numberOfQuestions" value='1' min='1' max='50' step="1">
+					<button class="startQuiz">Start</button>
+				</form>
 			</div>
-			<button class="submitAnswer">Submit Answer</button>
+			<div class="quiz">
+				<h2 class="question"></h2>
+				<h3 class="playerIndicator"></h3>
+				<div class="answerContainer clearfix">
+					<button class="answer answer1"></button>
+					<button class="answer answer2"></button>
+					<button class="answer answer3"></button>
+					<button class="answer answer4"></button>
+					<button class="submitAnswer">Submit Answer</button>
+				</div>
+			</div>
 		</section>
 		<section class="scoreBoard">
 			<h3 class="playerOne__score"></h3>
